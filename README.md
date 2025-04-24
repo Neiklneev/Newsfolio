@@ -1,1 +1,1 @@
-"# Newsfolio" 
+Newsfolio is our attempt at a news source with no bias, hooks or paywalls. It compiles its sources from NewsAPI, and then puts them in a form that anyone can read and understand easily without being brainwashed, like current media, and with no misinformation, because it is compiled from all sorts of sources, including BBC, CBNC, CNN, and even WSJ.
