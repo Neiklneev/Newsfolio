@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Newsfolio - Home
+{% endblock title %}
+
+{% block content %}
+  <br>
+ <h2 class="text-center">Articles Available Today:</h2>
+  <br>
+  <br>
+  
+  {% if data != None %}
+    <div class="container">
+      <div class="row">
+        {% for article in data['articles'] %}
+          <div class="col-md-4 col-lg-3 mb-4"> <!-- 6 cards per row on medium+ screens -->
+            <div class="card h-100">
+              {% if article['urlToImage'] != None %}
+          
+              <img src="{{ article['urlToImage'] }}" class="card-img-top" alt="Descriptive Image">
+
+              {% else %}
+          
+              <img src="https://media.istockphoto.com/id/1409329028/vector/no-picture-available-placeholder-thumbnail-icon-illustration-design.jpg?s=612x612&w=0&k=20&c=_zOuJu755g2eEUioiOUdz_mHKJQJn-tDgIAhQzyeKUQ=" class="card-img-top" alt="Descriptive Image">
+
+              {% endif %}
+          
+              <div class="card-body d-flex flex-column">
+                {% if article['author'] == None %}
+                  <h5 class="card-title">Author Unknown</h5>
+                {% else %}
+                  <h5 class="card-title">{{ article['author'] }}</h5>
+                {% endif %}
+                <p class="card-text">{{ article['title'] }}</p>
+                <a href="{{ article['url'] }}" class="btn btn-primary mt-auto">Go to original</a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% else %}
+    <p>There was an error handling the data. NewsAPI servers might be down.</p>
+  {% endif %}
+{% endblock content %}
+
